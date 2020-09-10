@@ -13,4 +13,9 @@ window.document.addEventListener("DOMContentLoaded", (e) => {
     player2.addEventListener("keyup", (e) => {
         enableNewGame();
     });
+
+    let newGameBtn = document.getElementById("new-game");
+    newGameBtn.addEventListener("click", (e) => {
+        let game = new Game();
+    });
 });
