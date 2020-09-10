@@ -1,8 +1,17 @@
+import { Column } from "./column.js";
+
 export class Game {
     constructor(player1name, player2name) {
         this.player1name = player1name;
         this.player2name = player2name;
         this.currentPlayer = 1;
+        this.column = [new Column(),
+                       new Column(),
+                       new Column(),
+                       new Column(),
+                       new Column(),
+                       new Column(),
+                       new Column()];
     }
 
     getName() {

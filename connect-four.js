@@ -44,6 +44,7 @@ window.document.addEventListener("DOMContentLoaded", (e) => {
 
     let clickTarget = document.getElementById("click-targets");
     clickTarget.addEventListener("click", (e) => {
+        currentPlayer = game.currentPlayer;
         game.playInColumn();
         updateUI();
         if (currentPlayer === 1) {
