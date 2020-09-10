@@ -15,10 +15,19 @@ function updateUI() {
         board.classList.remove("is-invisible");
         document.getElementById("game-name").innerHTML = game.getName();
     }
+    let currentPlayer = game.currentPlayer;
+    let clickTarget = document.getElementById("click-targets");
+    if (currentPlayer === 1) {
+        clickTarget.classList.add("red");
+        clickTarget.classList.remove("black");
+    } else {
+        clickTarget.classList.add("black");
+        clickTarget.classList.remove("red");
+    }
 }
 
 window.document.addEventListener("DOMContentLoaded", (e) => {
-    let currentPlayer;
+    // let currentPlayer;
     function enableNewGame() {
         if (player1.value !== "" && player2.value !== "") {
             newGameBtn.disabled = false;
@@ -34,7 +43,7 @@ window.document.addEventListener("DOMContentLoaded", (e) => {
 
     newGameBtn.addEventListener("click", (e) => {
         game = new Game(player1.value, player2.value);
-        currentPlayer = game.currentPlayer;
+        // currentPlayer = game.currentPlayer;
         player1.value = "";
         player2.value = "";
 
@@ -42,17 +51,14 @@ window.document.addEventListener("DOMContentLoaded", (e) => {
         updateUI();
     });
 
-    let clickTarget = document.getElementById("click-targets");
-    clickTarget.addEventListener("click", (e) => {
-        currentPlayer = game.currentPlayer;
+    document.getElementById("click-targets").addEventListener("click", (e) => {
+        let targetId = e.target.id;
+        if (!targetId.startsWith("column-")) {
+            return;
+        } else {
+            let columnIndex = Number.parseInt(targetId);
+        }
         game.playInColumn();
         updateUI();
-        if (currentPlayer === 1) {
-            clickTarget.classList.add("red");
-            clickTarget.classList.remove("black");
-        } else {
-            clickTarget.classList.add("black");
-            clickTarget.classList.remove("red");
-        }
     });
 });
