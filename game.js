@@ -25,11 +25,17 @@ export class Game {
         return column.getTokenAt(rowIndex);
     }
 
-    playInColumn() {
+    playInColumn(columnIndex) {
+        this.column[columnIndex].add(this.currentPlayer);
         if (this.currentPlayer === 1) {
             this.currentPlayer = 2;
         } else {
             this.currentPlayer = 1;
         }
+    }
+
+    isColumnFull(columnIndex) {
+        const column = this.column[columnIndex]
+        return column.isFull();
     }
 }

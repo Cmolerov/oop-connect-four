@@ -14,6 +14,13 @@ function updateUI() {
         document.getElementById("game-name").innerHTML = game.getName();
     }
 
+    for (let i = 0; i < 7; i++) {
+        let column = document.getElementById(`column-${i}`)
+        if (game.isColumnFull(column)) {
+            column.classList.add("full");
+        }
+    }
+
     for (let rowIndex = 0; rowIndex <= 5; rowIndex++) {
         for (let columnIndex = 0; columnIndex <= 6; columnIndex++) {
             let square = document.querySelector(
@@ -36,9 +43,9 @@ function updateUI() {
             }
         }
     }
-    let currentPlayer = game.currentPlayer;
+    let value = game.currentPlayer;
     let clickTarget = document.getElementById("click-targets");
-    if (currentPlayer === 1) {
+    if (value === 1) {
         clickTarget.classList.add("red");
         clickTarget.classList.remove("black");
     } else {
