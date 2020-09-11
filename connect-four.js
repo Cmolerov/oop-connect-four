@@ -13,11 +13,13 @@ function updateUI() {
         board.classList.remove("is-invisible");
         document.getElementById("game-name").innerHTML = game.getName();
     }
-
     for (let i = 0; i < 7; i++) {
         let column = document.getElementById(`column-${i}`);
+        console.log(game.isColumnFull(i));
         if (game.isColumnFull(i)) {
             column.classList.add("full");
+        } else {
+            column.classList.remove("full");
         }
     }
 
@@ -88,7 +90,6 @@ window.document.addEventListener("DOMContentLoaded", (e) => {
             let columnIndex = Number.parseInt(targetId[targetId.length - 1]);
             game.playInColumn(columnIndex);
             updateUI();
-            
         }
     });
 });
