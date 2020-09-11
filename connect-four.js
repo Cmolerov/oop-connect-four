@@ -21,12 +21,15 @@ function updateUI() {
             );
             square.innerHTML = "";
             let value = game.getTokenAt(rowIndex, columnIndex);
-            let token = document.createElement("div");
+            // console.log(square);
+
             if (value === 1) {
+                let token = document.createElement("div");
                 token.classList.add("token");
                 token.classList.add("red");
                 square.appendChild(token);
             } else if (value === 2) {
+                let token = document.createElement("div");
                 token.classList.add("token");
                 token.classList.add("black");
                 square.appendChild(token);
