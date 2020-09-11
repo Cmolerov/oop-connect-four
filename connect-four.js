@@ -15,8 +15,8 @@ function updateUI() {
     }
 
     for (let i = 0; i < 7; i++) {
-        let column = document.getElementById(`column-${i}`)
-        if (game.isColumnFull(column)) {
+        let column = document.getElementById(`column-${i}`);
+        if (game.isColumnFull(i)) {
             column.classList.add("full");
         }
     }
@@ -71,7 +71,7 @@ window.document.addEventListener("DOMContentLoaded", (e) => {
 
     newGameBtn.addEventListener("click", (e) => {
         game = new Game(player1.value, player2.value);
-        console.log(game);
+
         // currentPlayer = game.currentPlayer;
         player1.value = "";
         player2.value = "";
@@ -88,6 +88,7 @@ window.document.addEventListener("DOMContentLoaded", (e) => {
             let columnIndex = Number.parseInt(targetId[targetId.length - 1]);
             game.playInColumn(columnIndex);
             updateUI();
+            
         }
     });
 });

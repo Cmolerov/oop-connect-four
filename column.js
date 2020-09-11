@@ -17,6 +17,8 @@ export class Column {
     }
 
     isFull() {
-        return this.rows[0] !== null
+        return this.tokens[0] !== null;
     }
 }
+
+
